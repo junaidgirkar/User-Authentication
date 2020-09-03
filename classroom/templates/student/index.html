@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> Welcome {{user}} </h1>
+<a href="/student/register">Student REGISTER</a>
+<a href="/student/login/">Student LOGIN</a>
+
+{% if student.is_authenticated %}
+<h1>Student says ... hello {{ student.username }} {{ student.sap_id }}</h1>
+    <br />
+    <a href="{% url 'student_logout' %}">LOGOUT</a>
+{% else %}
+<h1>Rango says... hello Unauthenticated User</h1>
+    <br/>
+    <a href="{% url 'student_register' %}">Register</a>
+    <br/>
+    <a href="{%  url 'student_login' %}">Login</a>
+{% endif %}
+</body>
+</html>
