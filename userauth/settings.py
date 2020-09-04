@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'classroom',
+    "crispy_forms",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -116,7 +117,9 @@ USE_TZ = True
 
 LOGIN_URL = '/accounts/login/'
 
-LOGIN_REDIRECR_URL = 'home'
+
+LOGIN_REDIRECT_URL = "tacher/profile.html"
+LOGOUT_REDIRECT_URL = "/"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 

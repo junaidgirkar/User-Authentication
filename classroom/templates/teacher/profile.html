@@ -1,0 +1,12 @@
+<html>
+<head>
+    <title>profile</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        Welcome user, you are loged in..
+    {% else %}
+        You are not logged in
+    {% endif %}
+</body>
+</html>

@@ -7,14 +7,13 @@
 </head>
 
 <body>
-    <h1>Login to Teacher</h1>
+    <h1>Login to STUDENT</h1>
 
-    <form id="login_form" method="POST" action="{% url 'student_home' %}">
+    <form id="login_form" method="POST" action="{% url 'student_login' %}">
         {% csrf_token %}
         Username: <input type="text" name="username" value="" size="50" />
         <br />
-        Email: <input type="email" name='email' value="" size="50" />
-        <br>
+
         Password: <input type="password" name="password" value="" size="50" />
         <br />
 

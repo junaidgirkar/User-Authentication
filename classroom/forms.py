@@ -30,6 +30,7 @@ from django.contrib.auth.models import User
 from .models import Student, Teacher
 
 
+
 class StudentSignUpForm(UserCreationForm):
     #password = forms.CharField(widget=forms.PasswordInput())
     first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
@@ -41,7 +42,7 @@ class StudentSignUpForm(UserCreationForm):
     graduation_year = forms.CharField(max_length=4, required=False)
     class Meta:
         model = Student
-        fields = ('username', 'first_name', 'last_name', 'email','sap_id','dob', 'department','graduation_year', 'password1', 'password2')
+        fields = ('first_name', 'last_name', 'email','sap_id','dob', 'department','graduation_year', 'password1', 'password2')
 
 class TeacherSignUpForm(UserCreationForm):
     #password = forms.CharField(widget=forms.PasswordInput())
@@ -54,5 +55,5 @@ class TeacherSignUpForm(UserCreationForm):
     qualification = forms.CharField(max_length=255, required=False)
     class Meta:
         model = Teacher
-        fields = ('username', 'first_name', 'last_name', 'email','sap_id', 'dob', 'department', 'qualification', 'password1','password2' )
+        fields = ('first_name', 'last_name', 'email','sap_id', 'dob', 'department', 'qualification', 'password1','password2' )
 

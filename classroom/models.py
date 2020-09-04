@@ -6,11 +6,12 @@ from django.utils.translation import ugettext_lazy as _
 from .managers import UserManager, StudentManager, TeacherManager
 
 class User(AbstractBaseUser, PermissionsMixin):
+
     is_student = models.BooleanField(default=False)
     is_teacher = models.BooleanField(default=False)
 
     email = models.EmailField(_('email address'), blank=True, max_length = 50, unique=True)
-    username = models.CharField(_('username'), max_length=255, unique=True, default='default')
+    username = models.CharField(_('username'), max_length=255, default='default')
     password = models.CharField(_('password'), max_length=255)
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
@@ -30,7 +31,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     class Meta:
         verbose_name = _('user')
@@ -66,16 +67,10 @@ class Student(User, AbstractBaseUser):
     #student = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, null=False)
     graduation_year = models.CharField(_('graduation year'), max_length=4, blank=True)
     is_student = True
-    #email = models.EmailField(_('email address'), blank=True, max_length=50)
-    #sap_id = models.CharField(_('sap_id'), max_length =11, blank=True)
-    #username = models.CharField(_('username'), max_length=255, unique=True, default='default')
-    #first_name = models.CharField(_('first name'), max_length=30, blank=True)
-    #last_name = models.CharField(_('last name'), max_length=30, blank=True)
-    #password = models.CharField(_('password'), max_length=255)
 
     objects = StudentManager()
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     def __str__(self):
         return self.email
@@ -85,15 +80,11 @@ class Teacher(User, AbstractBaseUser):
     #teacher = models.OneToOneField(User, on_delete=models.CASCADE)
     qualification = models.CharField(_('qualification'), max_length =255, blank=True, null=True)
     is_teacher = True
-    #email = models.EmailField(_('email address'), blank=True, max_length=50)
-    #username = models.CharField(_('username'), max_length=255, unique=True, default='default')
-    #password = models.CharField(_('password'), max_length=255)
-    #first_name = models.CharField(_('first name'), max_length=30, blank=True)
-    #last_name = models.CharField(_('last name'), max_length=30, blank=True)
+
     objects = TeacherManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     def __str__(self):
         return self.email
